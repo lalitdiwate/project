@@ -10,28 +10,7 @@
         <meta content="Preview page of Metronic Admin Theme #1 for statistics, charts, recent events and reports" name="description" />
         <meta content="" name="author" />
         <!-- BEGIN GLOBAL MANDATORY STYLES -->
-        <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
-        <link href="../assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-        <link href="../assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
-        <link href="../assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-        <link href="../assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
-        <!-- END GLOBAL MANDATORY STYLES -->
-        <!-- BEGIN PAGE LEVEL PLUGINS -->
-        <link href="../assets/global/plugins/bootstrap-daterangepicker/daterangepicker.min.css" rel="stylesheet" type="text/css" />
-        <link href="../assets/global/plugins/morris/morris.css" rel="stylesheet" type="text/css" />
-        <link href="../assets/global/plugins/fullcalendar/fullcalendar.min.css" rel="stylesheet" type="text/css" />
-        <link href="../assets/global/plugins/jqvmap/jqvmap/jqvmap.css" rel="stylesheet" type="text/css" />
-        <!-- END PAGE LEVEL PLUGINS -->
-        <!-- BEGIN THEME GLOBAL STYLES -->
-        <link href="../assets/global/css/components-md.min.css" rel="stylesheet" id="style_components" type="text/css" />
-        <link href="../assets/global/css/plugins-md.min.css" rel="stylesheet" type="text/css" />
-        <!-- END THEME GLOBAL STYLES -->
-        <!-- BEGIN THEME LAYOUT STYLES -->
-        <link href="../assets/layouts/layout/css/layout.min.css" rel="stylesheet" type="text/css" />
-        <link href="../assets/layouts/layout/css/themes/darkblue.min.css" rel="stylesheet" type="text/css" id="style_color" />
-        <link href="../assets/layouts/layout/css/custom.min.css" rel="stylesheet" type="text/css" />
-        <!-- END THEME LAYOUT STYLES -->
-        <link rel="shortcut icon" href="favicon.ico" /> </head>
+        <?php include('header.php'); ?> </head>
     <!-- END HEAD -->
 
     <body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white page-md">
@@ -103,94 +82,7 @@
             <!-- BEGIN CONTAINER -->
             <div class="page-container">
                 <!-- BEGIN SIDEBAR -->
-                <div class="page-sidebar-wrapper">
-                    <!-- BEGIN SIDEBAR -->
-                    <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
-                    <!-- DOC: Change data-auto-speed="200" to adjust the sub menu slide up/down speed -->
-                    <div class="page-sidebar navbar-collapse collapse">
-                        <!-- BEGIN SIDEBAR MENU -->
-                        <!-- DOC: Apply "page-sidebar-menu-light" class right after "page-sidebar-menu" to enable light sidebar menu style(without borders) -->
-                        <!-- DOC: Apply "page-sidebar-menu-hover-submenu" class right after "page-sidebar-menu" to enable hoverable(hover vs accordion) sub menu mode -->
-                        <!-- DOC: Apply "page-sidebar-menu-closed" class right after "page-sidebar-menu" to collapse("page-sidebar-closed" class must be applied to the body element) the sidebar sub menu mode -->
-                        <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
-                        <!-- DOC: Set data-keep-expand="true" to keep the submenues expanded -->
-                        <!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
-                        <ul class="page-sidebar-menu  page-header-fixed " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200" style="padding-top: 20px">
-                            <!-- DOC: To remove the sidebar toggler from the sidebar you just need to completely remove the below "sidebar-toggler-wrapper" LI element -->
-                            <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
-                            <li class="sidebar-toggler-wrapper hide">
-                                <div class="sidebar-toggler">
-                                    <span></span>
-                                </div>
-                            </li>
-                            <!-- END SIDEBAR TOGGLER BUTTON -->
-                            <!-- DOC: To remove the search box from the sidebar you just need to completely remove the below "sidebar-search-wrapper" LI element -->
-                            <li class="sidebar-search-wrapper">
-                                <!-- BEGIN RESPONSIVE QUICK SEARCH FORM -->
-                                <!-- DOC: Apply "sidebar-search-bordered" class the below search form to have bordered search box -->
-                                <!-- DOC: Apply "sidebar-search-bordered sidebar-search-solid" class the below search form to have bordered & solid search box -->
-                                <form class="sidebar-search  " action="page_general_search_3.html" method="POST">
-                                    <a href="javascript:;" class="remove">
-                                        <i class="icon-close"></i>
-                                    </a>
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" placeholder="Search...">
-                                        <span class="input-group-btn">
-                                            <a href="javascript:;" class="btn submit">
-                                                <i class="icon-magnifier"></i>
-                                            </a>
-                                        </span>
-                                    </div>
-                                </form>
-                                <!-- END RESPONSIVE QUICK SEARCH FORM -->
-                            </li>
-                            <li class="nav-item start active open">
-                                <a href="javascript:;" class="nav-link nav-toggle">
-                                    <i class="icon-home"></i>
-                                    <span class="title">Dashboard</span>
-                                    <span class="selected"></span>
-                                    <span class=""></span>
-                                </a>
-                             </li>
-                             <li class="nav-item start ">
-                                <a href="student_details.html" class="nav-link nav-toggle">
-                                    <i class="fa fa-edit" ></i>
-                                    <span class="title"> Students Information</span>
-                                    <span class="selected"></span>
-                                    <span class=""></span>
-                                </a>
-                             </li>
-                            
-                             <li class="nav-item start ">
-                                <a href="student_update.html" class="nav-link nav-toggle">
-                                    <i class="fa fa-cog"></i>
-                                    <span class="title">update student details</span>
-                                    <span class="selected"></span>
-                                    <span class=""></span>
-                                </a>
-                             </li>
-                            <li class="nav-item start ">
-                                <a href="javascript:;" class="nav-link nav-toggle">
-                                    <i class="fa fa-file-text-o" ></i>
-                                    <span class="title">result details</span>
-                                    <span class="selected"></span>
-                                    <span class=""></span>
-                                </a>
-                             </li>
-                              <li class="nav-item start ">
-                                <a href="message.html" class="nav-link nav-toggle">
-                                    <i class="icon-user" ></i>
-                                    <span class="title">Students Messages</span>
-                                    <span class="btn-danger">13</span>
-                                    <span class=""></span>
-                                </a>
-                             </li>
-                        </ul>
-                        <!-- END SIDEBAR MENU -->
-                        <!-- END SIDEBAR MENU -->
-                    </div>
-                    <!-- END SIDEBAR -->
-                </div>
+                <?php include('sidebar.php'); ?>
                 <!-- END SIDEBAR -->
                 <!-- BEGIN CONTENT -->
                 <div class="page-content-wrapper">
@@ -224,48 +116,65 @@
                         <!-- BEGIN DASHBOARD STATS 1-->
                                 <!-- END REGIONAL STATS PORTLET-
                                 <!-- END PORTLET-->
-                           <div class="row">
-                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                                <a class="dashboard-stat dashboard-stat-v2 blue" href="#">
-                                    <div class="visual">
-                                        <i class="fa fa-comments"></i>
+
+
+                 <?php             
+                 include('conn.php');  
+                 $sql = "SELECT * from student_details";
+                 $sql1=mysqli_query($conn, $sql);
+                if ($sql1) {
+                 $value=mysqli_fetch_assoc($sql1);
+             
+                    
+                   ?>
+                           <div class="portlet box purple">
+                                    <div class="portlet-title">
+                                        <div class="caption">
+                                            <i class="fa fa-cogs"></i>Students List  </div>
+                                        
                                     </div>
-                                    <div class="details">
-                                        <div class="number">
-                                            <span data-counter="counterup" data-value="13">0</span>
+                                    <div class="portlet-body">
+                                        <div class="table-scrollable">
+                                            <table class="table table-striped table-bordered table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col"> Fisrt Name</th>
+                                                        <th scope="col"> Middle Name </th>
+                                                        <th scope="col"> Last Name </th>
+                                                        <th scope="col"> PRN NO </th>
+                                                        <th scope="col"> Gender</th>
+                                                        <th scope="col"> E-mail Address</th>
+                                                       <th scope="col"> More Details</th>
+                                                         
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td> <?php echo $value['first_name']; ?> </td>
+                                                        <td> <?php echo $value['middle_name']; ?> </td>
+                                                        <td>  <?php echo $value['last_name']; ?> </td>
+                                                        <td>  <?php echo $value['PRN']; ?> </td>
+                                                        <td>  <?php echo $value['gender']; ?> </td>
+                                                        <td>  <?php echo $value['email_address']; ?></td>
+                                                        <td> <a class="btn btn green" href="admin_more_details.php?PRN=<?php echo $value['PRN']; ?>">More  <i class="fa fa-edit" ></i></a></td>
+                                                        
+                                                       
+                                                    </tr>
+                                                   <?php
+                                                    
+                                                }
+                                                    else{
+                                                        echo $conn->error;
+                                                    }
+                                                   ?>
+                                                   
+                                                </tbody>
+                                            </table>
                                         </div>
-                                        <div class="desc"> Number OF Student Register </div>
                                     </div>
-                                </a>
-                            </div>
-                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                                <a class="dashboard-stat dashboard-stat-v2 red" href="#">
-                                    <div class="visual">
-                                        <i class="fa fa-bar-chart-o"></i>
-                                    </div>
-                                    <div class="details">
-                                        <div class="number">
-                                            <span data-counter="counterup" data-value="1">0</span> </div>
-                                        <div class="desc"> No OF Teachers Registers</div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                                <a class="dashboard-stat dashboard-stat-v2 green" href="#">
-                                    <div class="visual">
-                                        <i class="fa fa-shopping-cart"></i>
-                                    </div>
-                                    <div class="details">
-                                        <div class="number">
-                                            <span data-counter="counterup" data-value="54">0</span>
-                                        </div>
-                                        <div class="desc"> No Of Messages </div>
-                                    </div>
-                                </a>
-                            </div>
-                            
-                        </div>
-                      <hr>
+                                </div>
+                                <!-- END SAMPLE TABLE PORTLET-->
+
                         
                             
                     </div>

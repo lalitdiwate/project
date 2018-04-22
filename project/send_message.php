@@ -1,3 +1,8 @@
+<?php
+session_start();
+if(isset($_SESSION['PRN']))
+{
+?>
 <!DOCTYPE html>
 
 <html lang="en">
@@ -81,7 +86,7 @@
                                     </li>
                                     
                                     <li>
-                                        <a href="page_user_login_1.html">
+                                        <a href="logout.php">
                                             <i class="icon-key"></i> Log Out </a>
                                     </li>
                                 </ul>
@@ -103,94 +108,7 @@
             <!-- BEGIN CONTAINER -->
             <div class="page-container">
                 <!-- BEGIN SIDEBAR -->
-                <div class="page-sidebar-wrapper">
-                    <!-- BEGIN SIDEBAR -->
-                    <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
-                    <!-- DOC: Change data-auto-speed="200" to adjust the sub menu slide up/down speed -->
-                    <div class="page-sidebar navbar-collapse collapse">
-                        <!-- BEGIN SIDEBAR MENU -->
-                        <!-- DOC: Apply "page-sidebar-menu-light" class right after "page-sidebar-menu" to enable light sidebar menu style(without borders) -->
-                        <!-- DOC: Apply "page-sidebar-menu-hover-submenu" class right after "page-sidebar-menu" to enable hoverable(hover vs accordion) sub menu mode -->
-                        <!-- DOC: Apply "page-sidebar-menu-closed" class right after "page-sidebar-menu" to collapse("page-sidebar-closed" class must be applied to the body element) the sidebar sub menu mode -->
-                        <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
-                        <!-- DOC: Set data-keep-expand="true" to keep the submenues expanded -->
-                        <!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
-                        <ul class="page-sidebar-menu  page-header-fixed " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200" style="padding-top: 20px">
-                            <!-- DOC: To remove the sidebar toggler from the sidebar you just need to completely remove the below "sidebar-toggler-wrapper" LI element -->
-                            <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
-                            <li class="sidebar-toggler-wrapper hide">
-                                <div class="sidebar-toggler">
-                                    <span></span>
-                                </div>
-                            </li>
-                            <!-- END SIDEBAR TOGGLER BUTTON -->
-                            <!-- DOC: To remove the search box from the sidebar you just need to completely remove the below "sidebar-search-wrapper" LI element -->
-                            <li class="sidebar-search-wrapper">
-                                <!-- BEGIN RESPONSIVE QUICK SEARCH FORM -->
-                                <!-- DOC: Apply "sidebar-search-bordered" class the below search form to have bordered search box -->
-                                <!-- DOC: Apply "sidebar-search-bordered sidebar-search-solid" class the below search form to have bordered & solid search box -->
-                                <form class="sidebar-search  " action="page_general_search_3.html" method="POST">
-                                    <a href="javascript:;" class="remove">
-                                        <i class="icon-close"></i>
-                                    </a>
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" placeholder="Search...">
-                                        <span class="input-group-btn">
-                                            <a href="javascript:;" class="btn submit">
-                                                <i class="icon-magnifier"></i>
-                                            </a>
-                                        </span>
-                                    </div>
-                                </form>
-                                <!-- END RESPONSIVE QUICK SEARCH FORM -->
-                            </li>
-                            <li class="nav-item start active open">
-                                <a href="javascript:;" class="nav-link nav-toggle">
-                                    <i class="icon-home"></i>
-                                    <span class="title">Dashboard</span>
-                                    <span class="selected"></span>
-                                    <span class=""></span>
-                                </a>
-                             </li>
-                             <li class="nav-item start ">
-                                <a href="javascript:;" class="nav-link nav-toggle">
-                                    <i class="fa fa-edit" ></i>
-                                    <span class="title"> Students Information</span>
-                                    <span class="selected"></span>
-                                    <span class=""></span>
-                                </a>
-                             </li>
-                            
-                             <li class="nav-item start ">
-                                <a href="javascript:;" class="nav-link nav-toggle">
-                                    <i class="fa fa-cog"></i>
-                                    <span class="title">update student details</span>
-                                    <span class="selected"></span>
-                                    <span class=""></span>
-                                </a>
-                             </li>
-                            <li class="nav-item start ">
-                                <a href="javascript:;" class="nav-link nav-toggle">
-                                    <i class="fa fa-file-text-o" ></i>
-                                    <span class="title">result details</span>
-                                    <span class="selected"></span>
-                                    <span class=""></span>
-                                </a>
-                             </li>
-                              <li class="nav-item start ">
-                                <a href="javascript:;" class="nav-link nav-toggle">
-                                    <i class="icon-user" ></i>
-                                    <span class="title">Students Messages</span>
-                                    <span class="badge badge-success">13</span>
-                                    <span class=""></span>
-                                </a>
-                             </li>
-                        </ul>
-                        <!-- END SIDEBAR MENU -->
-                        <!-- END SIDEBAR MENU -->
-                    </div>
-                    <!-- END SIDEBAR -->
-                </div>
+               <?php include('student_sidebar.php');?>
                 <!-- END SIDEBAR -->
                 <!-- BEGIN CONTENT -->
                 <div class="page-content-wrapper">
@@ -216,53 +134,66 @@
                         </div>
                         <!-- END PAGE BAR -->
                         <!-- BEGIN PAGE TITLE-->
-                        <h1 class="page-title"> Admin Dashboard
+                        <h1 class="page-title"> Dashboard
                             <small></small>
                         </h1>
                         <!-- END PAGE TITLE-->
                         <!-- END PAGE HEADER-->
                         <!-- BEGIN DASHBOARD STATS 1-->
                                <!-- BEGIN SAMPLE FORM PORTLET-->
-                                <div class="portlet light bordered">
+                                 <div class="portlet light bordered">
                                     <div class="portlet-title">
                                         <div class="caption">
                                             <i class="icon-social-dribbble font-blue-sharp"></i>
-                                            <span class="caption-subject font-blue-sharp bold uppercase">Send Message</span>
+                                            <span class="caption-subject font-blue-sharp bold uppercase">Send Complaint </span>
                                         </div>
                                         
                                     </div>
                                     <div class="portlet-body form">
-                                        <form role="form">
+
+                                        <form role="form" action="" method="post">
                                             <div class="form-body">
                                                 <div class="form-group">
-                                                    <label>TO</label>
-                                                    <input type="text" class="form-control input-lg" placeholder="input-lg"> </div>
+                                                    <label>Title</label>
+                                                    <input type="text" class="form-control input-lg" placeholder="input-lg" name="title" required=""> </div>
                                                 
-                                                <div class="form-group">
-                                                    <label>TO ALL</label>
-                                                    <select class="form-control input-lg">
-                                                        <option>1st year</option>
-                                                        <option>2nd year</option>
-                                                        <option>3rd year</option>
-                                                        <option>4th yaer</option>
-                                                        <option>All years</option>
-                                                    </select>
-                                                </div>
+                                               
                                                <div class="form-group">
-                                                    <label>Message</label>
+                                                    <label>Description</label>
                                                     <textarea class="form-control input-lg"
-                                                    rows="15" placeholder="Message......."> </textarea></div>
+                                                    rows="10" placeholder="Message......." name="description" required=""> </textarea></div>
                                                 
                                             </div>
                                             <div class="form-actions right">
                                                 <button type="button" class="btn default">Cancel</button>
-                                                <button type="submit" class="btn green">Submit</button>
+                                                <button type="submit" class="btn green" name="complaint">Submit</button>
                                             </div>
                                         </form>
                                     </div>
                                 </div>
-                                <!-- END SAMPLE FORM PORTLET-->
-                               
+ <!-- END SAMPLE FORM PORTLET-->
+ <?php
+if(isset($_POST['complaint']))
+{
+if(include('conn.php'));
+{
+$title=$_POST['title'];
+$desc=$_POST['description'];
+$sender=$_SESSION['PRN'];
+$date=date("Y/D/m");
+$time=time("h:m");
+$sql = "INSERT INTO complaints (title, description,sender,date,time)
+VALUES ('$title', '$desc','$sender','$date','$time')";
+
+if (mysqli_query($conn, $sql)) {
+    echo "New record created successfully";
+} else {
+    echo "sorry something going to be wrong";
+}
+}
+}
+
+?>
                             
                     </div>
                     <!-- END CONTENT BODY -->
@@ -340,3 +271,9 @@
     </body>
 
 </html>
+<?php
+}
+else{
+    echo "sorry login first";
+}
+?>

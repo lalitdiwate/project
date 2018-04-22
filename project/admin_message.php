@@ -105,92 +105,7 @@
                 <!-- BEGIN SIDEBAR -->
                 <div class="page-sidebar-wrapper">
                     <!-- BEGIN SIDEBAR -->
-                    <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
-                    <!-- DOC: Change data-auto-speed="200" to adjust the sub menu slide up/down speed -->
-                    <div class="page-sidebar navbar-collapse collapse">
-                        <!-- BEGIN SIDEBAR MENU -->
-                        <!-- DOC: Apply "page-sidebar-menu-light" class right after "page-sidebar-menu" to enable light sidebar menu style(without borders) -->
-                        <!-- DOC: Apply "page-sidebar-menu-hover-submenu" class right after "page-sidebar-menu" to enable hoverable(hover vs accordion) sub menu mode -->
-                        <!-- DOC: Apply "page-sidebar-menu-closed" class right after "page-sidebar-menu" to collapse("page-sidebar-closed" class must be applied to the body element) the sidebar sub menu mode -->
-                        <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
-                        <!-- DOC: Set data-keep-expand="true" to keep the submenues expanded -->
-                        <!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
-                        <ul class="page-sidebar-menu  page-header-fixed " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200" style="padding-top: 20px">
-                            <!-- DOC: To remove the sidebar toggler from the sidebar you just need to completely remove the below "sidebar-toggler-wrapper" LI element -->
-                            <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
-                            <li class="sidebar-toggler-wrapper hide">
-                                <div class="sidebar-toggler">
-                                    <span></span>
-                                </div>
-                            </li>
-                            <!-- END SIDEBAR TOGGLER BUTTON -->
-                            <!-- DOC: To remove the search box from the sidebar you just need to completely remove the below "sidebar-search-wrapper" LI element -->
-                            <li class="sidebar-search-wrapper">
-                                <!-- BEGIN RESPONSIVE QUICK SEARCH FORM -->
-                                <!-- DOC: Apply "sidebar-search-bordered" class the below search form to have bordered search box -->
-                                <!-- DOC: Apply "sidebar-search-bordered sidebar-search-solid" class the below search form to have bordered & solid search box -->
-                                <form class="sidebar-search  " action="page_general_search_3.html" method="POST">
-                                    <a href="javascript:;" class="remove">
-                                        <i class="icon-close"></i>
-                                    </a>
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" placeholder="Search...">
-                                        <span class="input-group-btn">
-                                            <a href="javascript:;" class="btn submit">
-                                                <i class="icon-magnifier"></i>
-                                            </a>
-                                        </span>
-                                    </div>
-                                </form>
-                                <!-- END RESPONSIVE QUICK SEARCH FORM -->
-                            </li>
-                            <li class="nav-item start active open">
-                                <a href="javascript:;" class="nav-link nav-toggle">
-                                    <i class="icon-home"></i>
-                                    <span class="title">Dashboard</span>
-                                    <span class="selected"></span>
-                                    <span class=""></span>
-                                </a>
-                             </li>
-                             <li class="nav-item start ">
-                                <a href="javascript:;" class="nav-link nav-toggle">
-                                    <i class="fa fa-edit" ></i>
-                                    <span class="title"> Students Information</span>
-                                    <span class="selected"></span>
-                                    <span class=""></span>
-                                </a>
-                             </li>
-                            
-                             <li class="nav-item start ">
-                                <a href="javascript:;" class="nav-link nav-toggle">
-                                    <i class="fa fa-cog"></i>
-                                    <span class="title">update student details</span>
-                                    <span class="selected"></span>
-                                    <span class=""></span>
-                                </a>
-                             </li>
-                            <li class="nav-item start ">
-                                <a href="javascript:;" class="nav-link nav-toggle">
-                                    <i class="fa fa-file-text-o" ></i>
-                                    <span class="title">result details</span>
-                                    <span class="selected"></span>
-                                    <span class=""></span>
-                                </a>
-                             </li>
-                              <li class="nav-item start ">
-                                <a href="javascript:;" class="nav-link nav-toggle">
-                                    <i class="icon-user" ></i>
-                                    <span class="title">Students Messages</span>
-                                    <span class="badge badge-success">13</span>
-                                    <span class=""></span>
-                                </a>
-                             </li>
-                        </ul>
-                        <!-- END SIDEBAR MENU -->
-                        <!-- END SIDEBAR MENU -->
-                    </div>
-                    <!-- END SIDEBAR -->
-                </div>
+                    <?php include('sidebar.php'); ?>
                 <!-- END SIDEBAR -->
                 <!-- BEGIN CONTENT -->
                 <div class="page-content-wrapper">
@@ -224,48 +139,56 @@
                         <!-- BEGIN DASHBOARD STATS 1-->
                                 <!-- END REGIONAL STATS PORTLET-
                                 <!-- END PORTLET-->
-                                                <div class="col-md-6">
-                                                    <div class="btn-group ">
-                                                        <button id="sample_editable_1_new" class="btn green"> Send Message
-                                                            <i class="fa fa-plus"></i>
-                                                        </button>
+                                                <?php             
+                 include('conn.php');  
+                 $sql = "SELECT * from complaints where receiver='admin'";
+                 $sql1=mysqli_query($conn, $sql);
+                if ($sql1) {
+                 $result=mysqli_fetch_array($sql1);
+             
+                    foreach ($result as $key => $value) {
+                      
+                        echo $value."<br>";
+                    }
+
+                    }
+                   ?>                                               <hr><hr>
+                                     <div class="portlet-body">
+                                        <div class="tab-content">
+                                            <div class="tab-pane active" id="tab_actions_pending">
+                                                <!-- BEGIN: Actions -->
+                                                <div class="mt-actions">
+                                                    <div class="mt-action">
+                                                        
+                                                        <div class="mt-action-body">
+                                                            <div class="mt-action-row">
+                                                                <div class="mt-action-info ">
+                                                                    <div class="mt-action-icon ">
+                                                                        <i class=" icon-bubbles"></i>
+                                                                    </div>
+                                                                    <div class="mt-action-details ">
+                                                                        <span class="mt-action-author">Gavin Bond</span>
+                                                                        <p class="mt-action-desc">pending for approval</p>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="mt-action-datetime ">
+                                                                    <span class="mt-action-date">3 jun</span>
+                                                                    <span class="mt-action-dot bg-red"></span>
+                                                                    <span class="mt=action-time">9:30-13:00</span>
+                                                                </div>
+                                                               
+                                                            </div>
+                                                        </div> 
                                                     </div>
                                                 </div>
-                                                <hr><hr>
-                                                    <div class="col-lg-12">
-                                <div class="portlet light portlet-fit bordered">
-                                    
-                                    <div class="portlet-body">
-                                        <div class="mt-element-list">
-                                            <div class="mt-list-head list-news font-white bg-blue">
-                                                <div class="list-head-title-container">
-                                                    <span class="badge badge-primary pull-right">3</span>
-                                                    <h3 class="list-title">Messages </h3>
-                                                </div>
-                                            </div>
-                                            <div class="mt-list-container list-news">
-                                                <ul>
-                                                    <li class="mt-list-item">
-                                                        <div class="list-icon-container">
-                                                            <a href="javascript:;">
-                                                                <i class="fa fa-angle-right"></i>
-                                                            </a>
-                                                        </div>
-                                                        <div class="list-datetime bold uppercase font-green"> 8 Nov, 2015 </div>
-                                                        <div class="list-item-content">
-                                                            <h3 class="uppercase">
-                                                                <a href="javascript:;">Jiresh bondre</a>
-                                                            </h3>
-                                                            <p>thanks for solve my problem sir </p>
-                                                        </div>
-                                                    </li>
-                                                    
-                                                </ul>
+                                                 
+
+
                                             </div>
                                         </div>
-                              
-                        
-                            
+                                    </div>
+                                                <!-- END: Actions -->
+                                                                
                     </div>
                     <!-- END CONTENT BODY -->
                 </div>

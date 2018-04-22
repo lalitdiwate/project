@@ -1,3 +1,63 @@
+                       <?php
+                        $alert="";
+if(isset($_POST['register']))
+{
+if(include('conn.php'))
+{
+
+$PRN=$_POST['PRN'];
+$enrolment=$_POST['enrolment'];
+$fname=$_POST['fname'];
+$lname=$_POST['lname'];
+$email=$_POST['email'];
+$birth=$_POST['birth'];
+$pass=md5($_POST['pass']);
+$sql = "INSERT INTO students (PRN, enrolment,fname,lname,birth,email,password)
+VALUES ('$PRN', '$enrolment','$fname','$lname','$email','$birth','$pass')";
+
+if (mysqli_query($conn, $sql)) {
+    $alert="register successfully";
+} else {
+    echo "sorry something going to be wrong";
+     echo "Error: " . $sql . "<br>" . $conn->error;
+}
+}
+}
+?>
+
+<?php
+if(isset($_POST['login']))
+{
+if(include('conn.php'))
+{
+$PRN=$_POST['PRN'];
+$pass=md5($_POST['pass']);
+$sql = "SELECT * from students where PRN='$PRN' AND password='$pass'";
+$sql1=mysqli_query($conn, $sql);
+if ($sql1) {
+    $count=mysqli_num_rows($sql1);
+    if($count==1)
+    { session_start(); 
+     $_SESSION['PRN']=$PRN;
+        header('Location:student_index.php');
+    }
+    else {
+    $alert="sorry something going to be wrong";
+     //echo "Error: " . $sql . "<br>" . $conn->error;
+}
+} 
+
+else {
+    $alert="sorry something going to be wrong";
+     echo "Error: " . $sql . "<br>" . $conn->error;
+}
+     
+
+}
+}
+
+?>
+
 <!DOCTYPE html>
 <!-- 
 Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.3.7
@@ -50,16 +110,39 @@ License: You must have a valid license purchased only from themeforest(the above
     <!-- END HEAD -->
 
     <body class=" login">
+        <?php
+if(isset($_POST['complaint']))
+{
+if(include('conn.php'));
+{
+$title=$_POST['title'];
+$desc=$_POST['description'];
+
+$sql = "INSERT INTO complaints (title, description)
+VALUES ('$title', '$desc')";
+
+if (mysqli_query($conn, $sql)) {
+    echo "New record created successfully";
+} else {
+    echo "sorry something going to be wrong";
+}
+}
+}
+
+?>
+
+
+
         <!-- BEGIN : LOGIN PAGE 5-1 -->
         <div class="user-login-5">
-            <div class="row bs-reset">
-                <div class="col-md-6 bs-reset mt-login-5-bsfix">
+            <div class="row bs-reset" >
+                <div class="col-md-6 bs-reset mt-login-5-bsfix" >
                    <!-- BEGIN SAMPLE FORM PORTLET-->
 
                    <div>
                        <img src="../assets/images/logo.png" alt="" style="width: 100%;">
                    </div>
-                                <div class="portlet light bordered">
+                                <div class="portlet light bordered ">
                                     <div class="portlet-title">
                                         <div class="caption">
                                             <i class="icon-social-dribbble font-blue-sharp"></i>
@@ -68,102 +151,97 @@ License: You must have a valid license purchased only from themeforest(the above
                                         
                                     </div>
                                     <div class="portlet-body form">
-                                        <form role="form">
+                                        <form role="form" action="" method="post">
                                             <div class="form-body">
                                                 <div class="form-group">
                                                     <label>Title</label>
-                                                    <input type="text" class="form-control input-lg" placeholder="input-lg"> </div>
+                                                    <input type="text" class="form-control input-lg" placeholder="input-lg" name="title" required=""> </div>
                                                 
                                                
                                                <div class="form-group">
                                                     <label>Description</label>
                                                     <textarea class="form-control input-lg"
-                                                    rows="10" placeholder="Message......."> </textarea></div>
+                                                    rows="10" placeholder="Message......." name="description" required=""> </textarea></div>
                                                 
                                             </div>
                                             <div class="form-actions right">
                                                 <button type="button" class="btn default">Cancel</button>
-                                                <button type="submit" class="btn green">Submit</button>
+                                                <button type="submit" class="btn green" name="complaint">Submit</button>
                                             </div>
                                         </form>
                                     </div>
                                 </div>
+
                                 <!-- END SAMPLE FORM PORTLET-->
                                
                 </div>
                 <div class="col-md-6 login-container bs-reset mt-login-5-bsfix">
                     <div class="login-content">
-                        <h1>Metronic Admin Login</h1>
-                        <p> Lorem ipsum dolor sit amet, coectetuer adipiscing elit sed diam nonummy et nibh euismod aliquam erat volutpat. Lorem ipsum dolor sit amet, coectetuer adipiscing. </p>
-                        <form action="javascript:;" class="login-form" method="post">
+                      <br>
+                        <h1> Student Login</h1>
+                        
+                        
+                           <?php
+                       
+                       echo $alert;
+                        
+                       ?>
+                       
+                       
+
+                        <p> E-concealing  is online concealing system which solve the students problems</p>
+                        <form action="" class="login-form" method="post">
                             <div class="alert alert-danger display-hide">
                                 <button class="close" data-close="alert"></button>
-                                <span>Enter any username and password. </span>
+                                <span>Enter any PRN NUMBER and PASSWORD. </span>
                             </div>
                             <div class="row">
                                 <div class="col-xs-6">
-                                    <input class="form-control form-control-solid placeholder-no-fix form-group" type="text" autocomplete="off" placeholder="Username" name="username" required/> </div>
+                                    <input class="form-control form-control-solid placeholder-no-fix form-group" type="text" autocomplete="off" placeholder="PRN NUMBER" name="PRN" required/> </div>
                                 <div class="col-xs-6">
-                                    <input class="form-control form-control-solid placeholder-no-fix form-group" type="password" autocomplete="off" placeholder="Password" name="password" required/> </div>
+                                    <input class="form-control form-control-solid placeholder-no-fix form-group" type="password" autocomplete="off" placeholder="Password" name="pass" required/> </div>
                             </div>
                             <div class="row">
-                                <div class="col-sm-4">
-                                    <div class="rem-password">
-                                        <label class="rememberme mt-checkbox mt-checkbox-outline">
-                                            <input type="checkbox" name="remember" value="1" /> Remember me
-                                            <span></span>
-                                        </label>
-                                    </div>
-                                </div>
+                                
                                 <div class="col-sm-8 text-right">
                                     <div class="forgot-password">
-                                        <a href="javascript:;" id="forget-password" class="forget-password">Forgot Password?</a>
+                                        <a href="javascript:;" id="forget-password" class="btn green">Sign up</a>
                                     </div>
-                                    <button class="btn green" type="submit">Sign In</button>
+                                    <button class="btn green" type="submit" name="login">Sign In</button>
                                 </div>
                             </div>
                         </form>
                         <!-- BEGIN FORGOT PASSWORD FORM -->
-                        <form class="forget-form" action="javascript:;" method="post">
-                            <h3 class="font-green">Forgot Password ?</h3>
-                            <p> Enter your e-mail address below to reset your password. </p>
-                            <div class="form-group">
+                        <form class="forget-form" action="" method="post">
+                            <h3 class="font-green">sign up  ?</h3>
+                            <p> Enter your PRN NO , e-mail address below to sign up. </p>
+                             <div class="form-group">
+                                <input class="form-control placeholder-no-fix form-group" type="text" autocomplete="off" placeholder="PRN NO" name="PRN" /> </div>
+                                 <div class="form-group">
+                                <input class="form-control placeholder-no-fix form-group" type="text" autocomplete="off" placeholder="Enrolment NO" name="enrolment" /> </div>
+
+                                 <div class="form-group">
+                                <input class="form-control placeholder-no-fix form-group" type="text" autocomplete="off" placeholder="First Name" name="fname" /> </div>
+                                 <div class="form-group">
+                                <input class="form-control placeholder-no-fix form-group" type="text" autocomplete="off" placeholder="Last Name" name="lname" /> </div>
+                                <div class="form-group">
+                                <input class="form-control placeholder-no-fix form-group" type="date" autocomplete="off" placeholder="Date_Of_Birth" name="birth" /> </div>
+                                 <div class="form-group">
                                 <input class="form-control placeholder-no-fix form-group" type="text" autocomplete="off" placeholder="Email" name="email" /> </div>
+                                
+                                 <div class="form-group">
+                                <input class="form-control placeholder-no-fix form-group" type="text" autocomplete="off" placeholder="PASSWORD" name="pass" /> </div>
+                                 <div class="form-group">
+                                <input class="form-control placeholder-no-fix form-group" type="password" autocomplete="off" placeholder="CONFORM PASSWORD" name="cpass" /> </div>
+                           
                             <div class="form-actions">
                                 <button type="button" id="back-btn" class="btn green btn-outline">Back</button>
-                                <button type="submit" class="btn btn-success uppercase pull-right">Submit</button>
+                                <button type="submit" class="btn btn-success uppercase pull-right" name="register">Submit</button>
                             </div>
                         </form>
                         <!-- END FORGOT PASSWORD FORM -->
                     </div>
-                    <div class="login-footer">
-                        <div class="row bs-reset">
-                            <div class="col-xs-5 bs-reset">
-                                <ul class="login-social">
-                                    <li>
-                                        <a href="javascript:;">
-                                            <i class="icon-social-facebook"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:;">
-                                            <i class="icon-social-twitter"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:;">
-                                            <i class="icon-social-dribbble"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="col-xs-7 bs-reset">
-                                <div class="login-copyright text-right">
-                                    <p>Copyright &copy; Keenthemes 2015</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
         </div>
