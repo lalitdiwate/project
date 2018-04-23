@@ -139,46 +139,50 @@
                         <!-- BEGIN DASHBOARD STATS 1-->
                                 <!-- END REGIONAL STATS PORTLET-
                                 <!-- END PORTLET-->
-                                                <?php             
-                 include('conn.php');  
-                 $sql = "SELECT * from complaints where receiver='admin'";
-                 $sql1=mysqli_query($conn, $sql);
-                if ($sql1) {
-                 $result=mysqli_fetch_array($sql1);
-             
-                    foreach ($result as $key => $value) {
-                      
-                        echo $value."<br>";
-                    }
-
-                    }
-                   ?>                                               <hr><hr>
-                                     <div class="portlet-body">
+                                  <div class="portlet-body">
                                         <div class="tab-content">
                                             <div class="tab-pane active" id="tab_actions_pending">
                                                 <!-- BEGIN: Actions -->
                                                 <div class="mt-actions">
                                                     <div class="mt-action">
-                                                        
-                                                        <div class="mt-action-body">
+                                                            <?php             
+                 include('conn.php');  
+                 $sql = "SELECT * from complaints where receiver='admin'";
+                 $sql1=mysqli_query($conn, $sql);
+                if ($sql1) {
+                 ;
+             
+                    while($result=mysqli_fetch_array($sql1,MYSQLI_ASSOC)) {
+                     
+                       
+                           
+                   ?> 
+                                                        <div class="mt-action-body " style="margin-top: 2%;">
                                                             <div class="mt-action-row">
                                                                 <div class="mt-action-info ">
                                                                     <div class="mt-action-icon ">
                                                                         <i class=" icon-bubbles"></i>
                                                                     </div>
                                                                     <div class="mt-action-details ">
-                                                                        <span class="mt-action-author">Gavin Bond</span>
-                                                                        <p class="mt-action-desc">pending for approval</p>
+                                                                        <span class="mt-action-author"><?php echo $result['description'];?></span>
+                                                                      
                                                                     </div>
                                                                 </div>
                                                                 <div class="mt-action-datetime ">
-                                                                    <span class="mt-action-date">3 jun</span>
+                                                                    <span class="mt-action-date"><?php echo $result['date'];?></span>
                                                                     <span class="mt-action-dot bg-red"></span>
-                                                                    <span class="mt=action-time">9:30-13:00</span>
+                                                                    <span class="mt=action-time"><?php echo $result['time'];?></span>
                                                                 </div>
-                                                               
+                                                              
                                                             </div>
                                                         </div> 
+
+                                                         <?php
+
+                    }
+
+                    }
+                   ?> 
                                                     </div>
                                                 </div>
                                                  

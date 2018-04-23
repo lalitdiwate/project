@@ -117,16 +117,6 @@
                                 <!-- END REGIONAL STATS PORTLET-
                                 <!-- END PORTLET-->
 
-
-                 <?php             
-                 include('conn.php');  
-                 $sql = "SELECT * from student_details";
-                 $sql1=mysqli_query($conn, $sql);
-                if ($sql1) {
-                 $value=mysqli_fetch_assoc($sql1);
-             
-                    
-                   ?>
                            <div class="portlet box purple">
                                     <div class="portlet-title">
                                         <div class="caption">
@@ -149,20 +139,29 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
+                                                         <?php             
+                 include('conn.php');  
+                 $sql = "SELECT * from students";
+                 $sql1=mysqli_query($conn, $sql);
+                if ($sql1) {
+                 while($value=mysqli_fetch_array($sql1,MYSQLI_ASSOC))
+             {
+                    
+                   ?>                                   
                                                     <tr>
-                                                        <td> <?php echo $value['first_name']; ?> </td>
-                                                        <td> <?php echo $value['middle_name']; ?> </td>
-                                                        <td>  <?php echo $value['last_name']; ?> </td>
+                                                        <td> <?php echo $value['fname']; ?> </td>
+                                                        <td> <?php echo $value['lname']; ?> </td>
+                                                        <td>  <?php echo $value['birth']; ?> </td>
                                                         <td>  <?php echo $value['PRN']; ?> </td>
-                                                        <td>  <?php echo $value['gender']; ?> </td>
-                                                        <td>  <?php echo $value['email_address']; ?></td>
+                                                        <td>  <?php echo $value['enrolment']; ?> </td>
+                                                        <td>  <?php echo $value['email']; ?></td>
                                                         
                                                         <td> <a class="btn btn green" href="admin_edit.php?PRN=<?php echo $value['PRN']; ?>">Edit Info </a></td>
                                                        
                                                     </tr>
                                                    <?php
                                                     
-                                                }
+                                                }}
                                                     else{
                                                         echo $conn->error;
                                                     }

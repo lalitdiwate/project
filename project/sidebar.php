@@ -69,8 +69,17 @@
                                 <a href="admin_message.php" class="nav-link nav-toggle">
                                     <i class="icon-user" ></i>
                                     <span class="title">Students Complaints</span>
-                                    <span class="btn-danger">13</span>
-                                    <span class=""></span>
+                                    <span class="badge badge-default">                                             <?php             
+                 include('conn.php');  
+                 $sql = "SELECT * from Complaints";
+                 $sql1=mysqli_query($conn, $sql);
+                if ($sql1) {
+               $count=mysqli_num_rows($sql1);
+             echo $count;
+         }
+                    
+                   ?> </span>
+                                    
                                 </a>
                              </li>
                         </ul>
