@@ -1,0 +1,163 @@
+<?php include('inc/session.php') ?>
+
+    
+
+<!DOCTYPE html>
+
+<html lang="en">
+    <!--<![endif]-->
+    <!-- BEGIN HEAD -->
+
+    <?php include('head.php') ?>
+    <body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white page-md">
+        <div class="page-wrapper">
+
+            <?php include('header.php')?>
+            
+            <div class="clearfix"> </div>
+            <!-- END HEADER & CONTENT DIVIDER -->
+            
+            <!-- BEGIN CONTAINER -->
+            <div class="page-container">
+                <?php include('sidebar.php')?>
+                <!-- BEGIN CONTENT -->
+                <div class="page-content-wrapper">
+                    <!-- BEGIN CONTENT BODY -->
+                    <?php if ($_SESSION['type'] == 'admin') {?>
+                    <div class="page-content">
+                        <!-- BEGIN PAGE HEADER-->
+               
+                       <!-- BEGIN PAGE BAR -->
+                        <div class="page-bar">
+                            <ul class="page-breadcrumb">
+                                <li>
+                                    <a href="index.html">Home</a>
+                                    <i class="fa fa-circle"></i>
+                                </li>
+                                <li>
+                                    <span>Dashboard</span>
+                                </li>
+                            </ul>
+                            <div class="page-toolbar">
+                                <div id="dashboard-report-range" class="pull-right tooltips btn btn-sm" data-container="body" data-placement="bottom" data-original-title="Change dashboard date range">
+                                    <i class="icon-calendar"></i>&nbsp;
+                                    <span class="thin uppercase hidden-xs"></span>&nbsp;
+                                    <i class="fa fa-angle-down"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END PAGE BAR -->
+                        <!-- BEGIN PAGE TITLE-->
+                        <h1 class="page-title"> Admin Dashboard
+                            <small>statistics, charts, recent events and reports</small>
+                        </h1>
+                        <!-- END PAGE TITLE-->
+                        <!-- END PAGE HEADER-->
+                        <!-- Yethun Chalu Dya-->
+
+
+
+                        <?php
+
+$PRN=$_GET['PRN'];
+if(include('inc/config.php'))
+{
+
+
+$sql = "SELECT * from student_details where PRN='$PRN' AND status='1'";
+$sql1=mysqli_query($conn, $sql);
+if ($sql1) {
+    $result=mysqli_fetch_assoc($sql1);
+    if(isset($result))
+    {
+?>
+
+                          <div class="col-md-12 col-sm-12">
+                                                            <div class="portlet blue-hoki box">
+                                                                <div class="portlet-title">
+                                                                    <div class="caption">
+                                                                        <i class="fa fa-cogs"></i>Student Information </div>
+                                                                    <div class="actions">
+                                                                        
+                                                                    </div>
+                                                                </div>
+                                                                <div class="portlet-body">
+                                                                    <div class="row static-info">
+                                                                        <div class="col-md-5 name"> PRN NO: </div>
+                                                                        <div class="col-md-7 value"> <?php echo $result['PRN'];?> </div>
+                                                                    </div>
+                                                                     <div class="portlet-body">
+                                                                    <div class="row static-info">
+                                                                        <div class="col-md-5 name"> First name: </div>
+                                                                        <div class="col-md-7 value"> <?php echo $result['first_name'];?> </div>
+                                                                    </div>
+                                                                   <div class="portlet-body">
+                                                                    <div class="row static-info">
+                                                                        <div class="col-md-5 name"> Middle Name: </div>
+                                                                        <div class="col-md-7 value"> <?php echo $result['middle_name'];?> </div>
+                                                                    </div>
+                                                                     <div class="portlet-body">
+                                                                    <div class="row static-info">
+                                                                        <div class="col-md-5 name"> Mother name: </div>
+                                                                        <div class="col-md-7 value"> <?php echo $result['mother_name'];?> </div>
+                                                                    </div>
+                                                                     <div class="portlet-body">
+                                                                    <div class="row static-info">
+                                                                        <div class="col-md-5 name"> Date Of Birth: </div>
+                                                                        <div class="col-md-7 value"> <?php echo $result['date_of_birth'];?> </div>
+                                                                    </div>
+                                                                     <div class="portlet-body">
+                                                                    <div class="row static-info">
+                                                                        <div class="col-md-5 name"> Gender: </div>
+                                                                        <div class="col-md-7 value"> <?php echo $result['gender'];?> </div>
+                                                                    </div>
+                                                                     <div class="portlet-body">
+                                                                    <div class="row static-info">
+                                                                        <div class="col-md-5 name"> Blood Group: </div>
+                                                                        <div class="col-md-7 value"> <?php echo $result['blood_group'];?> </div>
+                                                                    </div>
+                                                                
+
+
+
+
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+  
+                          <?php
+                      }}}?>
+                        
+
+
+
+
+
+
+</div></div></div>
+
+
+
+                <!-- Yethun Khatam Hovu Dya-->
+                </div>
+                </div>
+                <!-- END CONTENT -->
+                <?php } else{
+                    include('404.php');
+                  } ?>
+                <?php include('quicksidebar.php') ?> 
+            </div>
+            <!-- END CONTAINER -->
+             
+           <?php include('footer.php')?>
+        </div>
+        <div class="quick-nav-overlay"></div>
+        <!-- END QUICK NAV -->
+<?php  include('foot.php')?>
+</body>
+
+
+</html>

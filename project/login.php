@@ -16,7 +16,7 @@ $sql = "INSERT INTO students (PRN, enrolment,fname,lname,birth,email,password)
 VALUES ('$PRN', '$enrolment','$fname','$lname','$email','$birth','$pass')";
 
 if (mysqli_query($conn, $sql)) {
-    $alert="register successfully";
+    $alert="Register Successfully";
 } else {
     echo "sorry something going to be wrong";
      echo "Error: " . $sql . "<br>" . $conn->error;

@@ -1,6 +1,6 @@
                        <?php
-// if(isset($_POST['submit']))
-// {
+if(isset($_POST['submit']))
+{
 if(include('conn.php'))
 {
 	session_start();
@@ -75,5 +75,5 @@ if (mysqli_query($conn, $sql)) {
 }
 }
 
-// }
+}
 ?>
